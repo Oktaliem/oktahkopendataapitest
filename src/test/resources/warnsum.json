@@ -1,0 +1,88 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1589874061.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "generalSituation",
+    "tcInfo",
+    "fireDangerWarning",
+    "forecastPeriod",
+    "forecastDesc",
+    "outlook",
+    "updateTime"
+  ],
+  "properties": {
+    "generalSituation": {
+      "$id": "#root/generalSituation",
+      "title": "Generalsituation",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "A trough of low pressure is bringing unsettled weather to the northern part of the South China Sea. The associated band of intense thundery showers continued to develop over the seas south of Hong Kong this morning."
+      ],
+      "pattern": "^.*$"
+    },
+    "tcInfo": {
+      "$id": "#root/tcInfo",
+      "title": "Tcinfo",
+      "type": "string",
+      "default": "",
+      "examples": [
+        ""
+      ],
+      "pattern": "^.*$"
+    },
+    "fireDangerWarning": {
+      "$id": "#root/fireDangerWarning",
+      "title": "Firedangerwarning",
+      "type": "string",
+      "default": "",
+      "examples": [
+        ""
+      ],
+      "pattern": "^.*$"
+    },
+    "forecastPeriod": {
+      "$id": "#root/forecastPeriod",
+      "title": "Forecastperiod",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "Weather forecast for this afternoon and tonight"
+      ],
+      "pattern": "^.*$"
+    },
+    "forecastDesc": {
+      "$id": "#root/forecastDesc",
+      "title": "Forecastdesc",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "Mainly cloudy with a few showers and isolated thunderstorms. Hot with sunny intervals in the afternoon. Light winds."
+      ],
+      "pattern": "^.*$"
+    },
+    "outlook": {
+      "$id": "#root/outlook",
+      "title": "Outlook",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "Sunny intervals and a few showers tomorrow. There will be heavy showers and squally thunderstorms on Thursday and early Friday. Showers will ease off over the weekend."
+      ],
+      "pattern": "^.*$"
+    },
+    "updateTime": {
+      "$id": "#root/updateTime",
+      "title": "Updatetime",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "2020-05-19T15:30:00+08:00"
+      ],
+      "pattern": "^.*$"
+    }
+  }
+}

@@ -1,0 +1,378 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1589883743.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "generalSituation",
+    "weatherForecast",
+    "updateTime",
+    "seaTemp",
+    "soilTemp"
+  ],
+  "properties": {
+    "generalSituation": {
+      "$id": "#root/generalSituation",
+      "title": "Generalsituation",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "A trough of low pressure will bring unsettled weather to the northern part of the South China Sea today and tomorrow. Another trough of low pressure is expected to bring heavy showers and squally thunderstorms to southern China in the next couple of days. With the trough of low pressure weakening slightly over the weekend, showers will ease off and the weather will be brighter over the coastal areas of Guangdong."
+      ],
+      "pattern": "^.*$"
+    },
+    "weatherForecast": {
+      "$id": "#root/weatherForecast",
+      "title": "Weatherforecast",
+      "type": "array",
+      "default": [],
+      "items":{
+        "$id": "#root/weatherForecast/items",
+        "title": "Items",
+        "type": "object",
+        "required": [
+          "forecastDate",
+          "week",
+          "forecastWind",
+          "forecastWeather",
+          "forecastMaxtemp",
+          "forecastMintemp",
+          "forecastMaxrh",
+          "forecastMinrh",
+          "ForecastIcon"
+        ],
+        "properties": {
+          "forecastDate": {
+            "$id": "#root/weatherForecast/items/forecastDate",
+            "title": "Forecastdate",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "20200520"
+            ],
+            "pattern": "^.*$"
+          },
+          "week": {
+            "$id": "#root/weatherForecast/items/week",
+            "title": "Week",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "Wednesday"
+            ],
+            "pattern": "^.*$"
+          },
+          "forecastWind": {
+            "$id": "#root/weatherForecast/items/forecastWind",
+            "title": "Forecastwind",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "South to southwest force 3 to 4."
+            ],
+            "pattern": "^.*$"
+          },
+          "forecastWeather": {
+            "$id": "#root/weatherForecast/items/forecastWeather",
+            "title": "Forecastweather",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "Sunny intervals, a few showers and isolated thunderstorms."
+            ],
+            "pattern": "^.*$"
+          },
+          "forecastMaxtemp": {
+            "$id": "#root/weatherForecast/items/forecastMaxtemp",
+            "title": "Forecastmaxtemp",
+            "type": "object",
+            "required": [
+              "value",
+              "unit"
+            ],
+            "properties": {
+              "value": {
+                "$id": "#root/weatherForecast/items/forecastMaxtemp/value",
+                "title": "Value",
+                "type": "integer",
+                "examples": [
+                  30
+                ],
+                "default": 0
+              },
+              "unit": {
+                "$id": "#root/weatherForecast/items/forecastMaxtemp/unit",
+                "title": "Unit",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "C"
+                ],
+                "pattern": "^.*$"
+              }
+            }
+          }
+        ,
+          "forecastMintemp": {
+            "$id": "#root/weatherForecast/items/forecastMintemp",
+            "title": "Forecastmintemp",
+            "type": "object",
+            "required": [
+              "value",
+              "unit"
+            ],
+            "properties": {
+              "value": {
+                "$id": "#root/weatherForecast/items/forecastMintemp/value",
+                "title": "Value",
+                "type": "integer",
+                "examples": [
+                  26
+                ],
+                "default": 0
+              },
+              "unit": {
+                "$id": "#root/weatherForecast/items/forecastMintemp/unit",
+                "title": "Unit",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "C"
+                ],
+                "pattern": "^.*$"
+              }
+            }
+          }
+        ,
+          "forecastMaxrh": {
+            "$id": "#root/weatherForecast/items/forecastMaxrh",
+            "title": "Forecastmaxrh",
+            "type": "object",
+            "required": [
+              "value",
+              "unit"
+            ],
+            "properties": {
+              "value": {
+                "$id": "#root/weatherForecast/items/forecastMaxrh/value",
+                "title": "Value",
+                "type": "integer",
+                "examples": [
+                  95
+                ],
+                "default": 0
+              },
+              "unit": {
+                "$id": "#root/weatherForecast/items/forecastMaxrh/unit",
+                "title": "Unit",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "percent"
+                ],
+                "pattern": "^.*$"
+              }
+            }
+          }
+        ,
+          "forecastMinrh": {
+            "$id": "#root/weatherForecast/items/forecastMinrh",
+            "title": "Forecastminrh",
+            "type": "object",
+            "required": [
+              "value",
+              "unit"
+            ],
+            "properties": {
+              "value": {
+                "$id": "#root/weatherForecast/items/forecastMinrh/value",
+                "title": "Value",
+                "type": "integer",
+                "examples": [
+                  75
+                ],
+                "default": 0
+              },
+              "unit": {
+                "$id": "#root/weatherForecast/items/forecastMinrh/unit",
+                "title": "Unit",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "percent"
+                ],
+                "pattern": "^.*$"
+              }
+            }
+          }
+        ,
+          "ForecastIcon": {
+            "$id": "#root/weatherForecast/items/ForecastIcon",
+            "title": "Forecasticon",
+            "type": "integer",
+            "examples": [
+              54
+            ],
+            "default": 0
+          }
+        }
+      }
+
+    },
+    "updateTime": {
+      "$id": "#root/updateTime",
+      "title": "Updatetime",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "2020-05-19T16:30:00+08:00"
+      ],
+      "pattern": "^.*$"
+    },
+    "seaTemp": {
+      "$id": "#root/seaTemp",
+      "title": "Seatemp",
+      "type": "object",
+      "required": [
+        "place",
+        "value",
+        "unit",
+        "recordTime"
+      ],
+      "properties": {
+        "place": {
+          "$id": "#root/seaTemp/place",
+          "title": "Place",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "North Point"
+          ],
+          "pattern": "^.*$"
+        },
+        "value": {
+          "$id": "#root/seaTemp/value",
+          "title": "Value",
+          "type": "integer",
+          "examples": [
+            27
+          ],
+          "default": 0
+        },
+        "unit": {
+          "$id": "#root/seaTemp/unit",
+          "title": "Unit",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "C"
+          ],
+          "pattern": "^.*$"
+        },
+        "recordTime": {
+          "$id": "#root/seaTemp/recordTime",
+          "title": "Recordtime",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "2020-05-19T14:00:00+08:00"
+          ],
+          "pattern": "^.*$"
+        }
+      }
+    }
+  ,
+    "soilTemp": {
+      "$id": "#root/soilTemp",
+      "title": "Soiltemp",
+      "type": "array",
+      "default": [],
+      "items":{
+        "$id": "#root/soilTemp/items",
+        "title": "Items",
+        "type": "object",
+        "required": [
+          "place",
+          "value",
+          "unit",
+          "recordTime",
+          "depth"
+        ],
+        "properties": {
+          "place": {
+            "$id": "#root/soilTemp/items/place",
+            "title": "Place",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "Hong Kong Observatory"
+            ],
+            "pattern": "^.*$"
+          },
+          "value": {
+            "$id": "#root/soilTemp/items/value",
+            "title": "Value",
+            "type": "number",
+            "examples": [
+              28.1
+            ],
+            "default": 0.0
+          },
+          "unit": {
+            "$id": "#root/soilTemp/items/unit",
+            "title": "Unit",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "C"
+            ],
+            "pattern": "^.*$"
+          },
+          "recordTime": {
+            "$id": "#root/soilTemp/items/recordTime",
+            "title": "Recordtime",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "2020-05-19T07:00:00+08:00"
+            ],
+            "pattern": "^.*$"
+          },
+          "depth": {
+            "$id": "#root/soilTemp/items/depth",
+            "title": "Depth",
+            "type": "object",
+            "required": [
+              "unit",
+              "value"
+            ],
+            "properties": {
+              "unit": {
+                "$id": "#root/soilTemp/items/depth/unit",
+                "title": "Unit",
+                "type": "string",
+                "default": "",
+                "examples": [
+                  "metre"
+                ],
+                "pattern": "^.*$"
+              },
+              "value": {
+                "$id": "#root/soilTemp/items/depth/value",
+                "title": "Value",
+                "type": "number",
+                "examples": [
+                  0.5
+                ],
+                "default": 0.0
+              }
+            }
+          }
+
+        }
+      }
+
+    }
+  }
+}
