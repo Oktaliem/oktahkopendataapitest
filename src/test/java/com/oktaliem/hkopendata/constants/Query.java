@@ -14,7 +14,7 @@ public interface Query {
     String QEM = "qem";
     String FEQ = "feltearthquake";
 
-    //language
+    //Language
     String EN = "en";
     String TC = "tc";
     String SC = "sc";

@@ -26,20 +26,41 @@ public class Exercise {
     @Title("Get Weather Information for 'Current Weather Report' and 'English' language")
     public void testcase_01() {
         String response = user.getWeatherInfo(RHR, EN);
-        user.verifyWeatherInfoIsCorrect(response, RHR, EN);
+        user.verifyWeatherInfoIsCorrect(response, RHR);
     }
 
     @Test()
     @Title("Get Weather Information for 'Current Weather Report' and 'Traditional Chinese' language")
     public void testcase_02() {
         String response = user.getWeatherInfo(RHR, TC);
-        user.verifyWeatherInfoIsCorrect(response, RHR, TC);
+        user.verifyWeatherInfoIsCorrect(response, RHR);
     }
 
     @Test()
     @Title("Get Weather Information for 'Current Weather Report' and 'Simplified Chinese' language")
     public void testcase_03() {
         String response = user.getWeatherInfo(RHR, SC);
-        user.verifyWeatherInfoIsCorrect(response, RHR, SC);
+        user.verifyWeatherInfoIsCorrect(response, RHR);
+    }
+
+    @Test()
+    @Title("Get Weather Information for 'Current Weather Report' and default language")
+    public void testcase_04() {
+        String response = user.getWeatherInfo(RHR, "");
+        user.verifyWeatherInfoIsCorrect(response, RHR);
+    }
+
+    @Test()
+    @Title("[Neg] Get Weather Information with No Data Type and with default language")
+    public void testcase_05() {
+        String response = user.getWeatherInfo("", "");
+        user.unableToSeeWeatherInfo(response, RHR);
+    }
+
+    @Test()
+    @Title("[Neg] Get Weather Information with No Data Type and with and 'English' language")
+    public void testcase_06() {
+        String response = user.getWeatherInfo("", EN);
+        user.unableToSeeWeatherInfo(response, RHR);
     }
 }

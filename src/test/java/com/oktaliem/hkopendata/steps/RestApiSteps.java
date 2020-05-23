@@ -17,6 +17,7 @@ import org.junit.Assert;
 import java.io.*;
 
 import static com.oktaliem.hkopendata.constants.Query.*;
+import static com.oktaliem.hkopendata.utilities.DateTimeUtil.*;
 import static io.restassured.path.json.JsonPath.from;
 import static java.lang.Boolean.TRUE;
 import static org.hamcrest.CoreMatchers.*;
@@ -35,14 +36,59 @@ public class RestApiSteps {
                 .given().relaxedHTTPSValidation()
                 .log().all()
                 .when()
-                .get(Endpoints.GET_WEATHER + "?" + "dataType=" + dataType + "&lang=" + lang)
+                .get(getWeatherUrl(dataType,lang))
                 .then()
                 .log().all()
                 .extract().asString();
     }
 
+    private String getWeatherUrl(String dataType, String lang) {
+        String url = "";
+        switch (dataType) {
+            case "":
+                switch (lang) {
+                    case "":
+                        url = Endpoints.GET_WEATHER;
+                        break;
+                    case EN:
+                    case TC:
+                    case SC:
+                        url = Endpoints.GET_WEATHER + "?" + "lang=" + lang;
+                        break;
+                    default:
+                        System.out.println("Invalid Language");
+                        break;
+                }
+                break;
+            case FLW:
+            case FND:
+            case RHR:
+            case WNI:
+            case WWS:
+            case SWT:
+                switch (lang) {
+                    case "":
+                        url = Endpoints.GET_WEATHER + "?" + "dataType=" + dataType;
+                        break;
+                    case EN:
+                    case TC:
+                    case SC:
+                        url = Endpoints.GET_WEATHER + "?" + "dataType=" + dataType + "&lang=" + lang;
+                        break;
+                    default:
+                        System.out.println("Invalid Language");
+                        break;
+                }
+                break;
+            default:
+                System.out.println("Invalid Data Type");
+                break;
+        }
+        return url;
+    }
+
     @Step
-    public void verifyWeatherInfoIsCorrect(String response, String dataType, String lang) {
+    public void verifyWeatherInfoIsCorrect(String response, String dataType) {
         assertThat(200, equalTo(SerenityRest.then().extract().statusCode()));
         if (!(from(response).get("lightning") == null)) {
             System.out.println("Lightning data is detected");
@@ -55,23 +101,28 @@ public class RestApiSteps {
         assertThat(from(response).get("rainfall.data[0].unit"), equalTo("mm"));
         assertThat(from(response).get("rainfall.data[0].place"), not(isEmptyOrNullString())); // bisa bahasa mandarin
         assertThat(from(response).get("rainfall.data[0].max"), is(instanceOf(Integer.class)));
-//        assertThat(from(response).get("rainfall.data[0].min"), equalTo("")); //min data is missing
+        if (!(from(response).get("rainfall.data[0].min") == null)) {
+            assertThat(from(response).get("rainfall.data[0].min"), is(instanceOf(Integer.class)));
+        } else { System.out.println("No Minimum rainfall record data available"); }
+
         assertThat(from(response).get("rainfall.data[0].main"), equalTo("FALSE"));
         assertThat(from(response).get("rainfall.startTime"), not(isEmptyOrNullString()));
         assertThat(from(response).get("rainfall.startTime"), not(isEmptyOrNullString()));
 
         assertThat(from(response).get("icon[0]"), is(instanceOf(Integer.class)));
-        assertThat(from(response).get("iconUpdateTime"), not(isEmptyOrNullString())); //tanggal bisa diakalin dengan tanggal saja
+        assertThat(from(response).get("iconUpdateTime"), containsString(getCurrentDate()));
 
-        assertThat(from(response).get("uvindex.data[0].place"), not(isEmptyOrNullString())); //tanggal bisa diakalin dengan tanggal saja
+        if (getCurrentHours() >= 6 && getCurrentHours() <= 18) {
+        assertThat(from(response).get("uvindex.data[0].place"), not(isEmptyOrNullString()));
         assertThat(from(response).get("uvindex.data[0].value"), is(instanceOf(Integer.class)));
         assertThat(from(response).get("uvindex.data[0].desc"), not(isEmptyOrNullString()));
         if (!(from(response).get("uvindex.data[0].message") == null)) {
             assertThat(from(response).get("uvindex.data[0].message"), not(isEmptyOrNullString()));
         } else { System.out.println("No Message for UV index data available"); }
         assertThat(from(response).get("uvindex.recordDesc"), not(isEmptyOrNullString()));
+        }
 
-        assertThat(from(response).get("updateTime"), not(isEmptyOrNullString())); //tanggal bisa diakalin dengan tanggal saja
+        assertThat(from(response).get("updateTime"), containsString(getCurrentDate()));
         assertThat(from(response).get("warningMessage"), equalTo(""));
 
         if (!(from(response).get("rainstormReminder") == null)) {
@@ -84,11 +135,15 @@ public class RestApiSteps {
 
         if (!(from(response).get("tcmessage") == null)) {
             assertThat(from(response).get("tcmessage"), equalTo(""));
-        } else { System.out.println("No Message of tropical cyclone position data available"); }
+        } else {
+            System.out.println("No Message of tropical cyclone position data available");
+        }
 
         if (!(from(response).get("mintempFrom00To09") == null)) {
             assertThat(from(response).get("mintempFrom00To09"), equalTo(""));
-        } else { System.out.println("No Minimum temperature from midnight to 9 am data available"); }
+        } else {
+            System.out.println("No Minimum temperature from midnight to 9 am data available");
+        }
 
         if (!(from(response).get("rainfallFrom00To12") == null)) {
             assertThat(from(response).get("rainfallFrom00To12"), equalTo(""));
@@ -102,35 +157,18 @@ public class RestApiSteps {
             assertThat(from(response).get("rainfallJanuaryToLastMonth"), equalTo(""));
         } else { System.out.println("No Accumulated rainfall from January to last month data available"); }
 
-
         assertThat(from(response).get("temperature.data[0].place"), not(isEmptyOrNullString())); //ada bahasa mandarin jg
-        assertThat(from(response).get("temperature.data[0].unit"), not(isEmptyOrNullString()));
-        assertThat(from(response).get("temperature.recordTime"), not(isEmptyOrNullString())); //ambil tanggal nya aja
+        assertThat(from(response).get("temperature.data[0].unit"), equalTo("C"));
+        assertThat(from(response).get("temperature.recordTime"), containsString(getCurrentDate()));
 
         assertThat(from(response).get("humidity.data[0].value"), is(instanceOf(Integer.class)));
-        assertThat(from(response).get("humidity.data[0].unit"), not(isEmptyOrNullString()));
+        assertThat(from(response).get("humidity.data[0].unit"),  not(isEmptyOrNullString()));
         assertThat(from(response).get("humidity.data[0].place"), not(isEmptyOrNullString())); //ada bahasa mandarin jg
-        assertThat(from(response).get("humidity.recordTime"), not(isEmptyOrNullString())); //ambil tanggal nya aja
+        assertThat(from(response).get("humidity.recordTime"), containsString(getCurrentDate()));
 
-        // or you can assert with Json Scheme
-        if (!response.equals("{}")) {
-            validateJsonSchema(response, dataType);
-        } else {
-            System.out.println("Get API is successful but return no data, Test Passed");
-        }
-
-
-        switch (lang) {
-            case EN:
-                //
-                break;
-            case TC:
-                //a
-                break;
-            case SC:
-                //c
-                break;
-        }
+//         Or you can assert with Json Scheme instead
+        if (!response.equals("{}")) { validateJsonSchema(response, dataType);
+        } else { System.out.println("Get API is successful but return no data, Test Passed");}
     }
 
     private void validateJsonSchema(String response, String jsonSchema) {
@@ -144,11 +182,8 @@ public class RestApiSteps {
     @Step
     public void verifyEarthquakeInfoIsCorrect(String response, String dataType, String lang) {
         assertThat(200, equalTo(SerenityRest.then().extract().statusCode()));
-        if (!response.equals("{}")) {
-            validateJsonSchema(response, dataType);
-        } else {
-            System.out.println("Get API is successful but return no data, Test Passed");
-        }
+        if (!response.equals("{}")) { validateJsonSchema(response, dataType);
+        } else { System.out.println("Get API is successful but return no data, Test Passed"); }
     }
 
     @Step
@@ -164,7 +199,7 @@ public class RestApiSteps {
     }
 
     @Step
-    public String getClimateAndWeatherInfo(ClimateAndWeatherModel requestBody, String methodName) throws IOException {
+    public String getClimateAndWeatherInfo(ClimateAndWeatherModel requestBody, String methodName, String fileType) throws IOException {
         String baseEndpoint = Endpoints.GET_OPENDATA + "?" + "dataType=" + requestBody.getDataTpe() + "&rformat="
                 + requestBody.getRformat() + "&station=" + requestBody.getStation() +
                 "&year=" + requestBody.getYear();
@@ -186,8 +221,8 @@ public class RestApiSteps {
                 .then()
                 .log().all()
                 .extract().asString();
-        if (requestBody.getRformat().equals("csv")) {
-            writeFileTo(response, methodName, "csv");
+        if (requestBody.getRformat().equals(fileType)) {
+            writeFileTo(response, methodName, fileType);
         }
         assertThat(200, equalTo(SerenityRest.then().extract().statusCode()));
         return response;
@@ -255,4 +290,9 @@ public class RestApiSteps {
         //in-progress
     }
 
+    @Step
+    public void unableToSeeWeatherInfo(String response, String dataType) {
+        assertThat(404, equalTo(SerenityRest.then().extract().statusCode()));
+        assertThat(response, equalTo("Page not found."));
+    }
 }

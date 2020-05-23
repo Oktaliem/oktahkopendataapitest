@@ -14,6 +14,9 @@ import org.junit.runners.MethodSorters;
 
 import java.io.IOException;
 
+import static com.oktaliem.hkopendata.constants.Query.CSV;
+import static com.oktaliem.hkopendata.constants.Query.JSON;
+
 /**
  * @Author : Okta Liem
  * mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuits.ClimateAndWeatherInfoApi -Dskip-test=true
@@ -34,12 +37,12 @@ public class ClimateAndWeatherInfoApi {
     @Title("Get Climate and Weather Information with Parameters: HHOT, csv, CCH and 2020")
     public void testcase_01() throws IOException {
         requestBody.setDataTpe("HHOT")
-                .setRformat("csv")
+                .setRformat(CSV)
                 .setStation("CCH")
                 .setYear("2020")
                 .setMonth("2")
                 .setDay("1");
-        user.getClimateAndWeatherInfo(requestBody, testName.getMethodName());
+        user.getClimateAndWeatherInfo(requestBody, testName.getMethodName(),CSV);
         user.verifyDownloadedFileIsCorrect(testName.getMethodName(), requestBody.getRformat());
     }
 
@@ -47,12 +50,12 @@ public class ClimateAndWeatherInfoApi {
     @Title("Get Climate and Weather Information with Parameters: HHOT, json, CCH and 2020")
     public void testcase_02() throws IOException {
         requestBody.setDataTpe("HHOT")
-                .setRformat("json")
+                .setRformat(JSON)
                 .setStation("CCH")
                 .setYear("2020")
                 .setMonth("2")
                 .setDay("1");
-        String response = user.getClimateAndWeatherInfo(requestBody, testName.getMethodName());
+        String response = user.getClimateAndWeatherInfo(requestBody, testName.getMethodName(), JSON);
         user.verifyClimateAndWeatherInfoAreCorrect(response);
     }
 }
