@@ -24,6 +24,9 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.Matchers.isEmptyOrNullString;
 import static org.junit.Assert.assertThat;
 
+/**
+ * @author Okta Liem
+ */
 public class RestApiSteps {
 
     RequestSpecification weatherRequestSpec = new RequestSpecBuilder()
@@ -99,7 +102,7 @@ public class RestApiSteps {
         } else { System.out.println("No Lightning data available"); }
 
         assertThat(from(response).get("rainfall.data[0].unit"), equalTo("mm"));
-        assertThat(from(response).get("rainfall.data[0].place"), not(isEmptyOrNullString())); // bisa bahasa mandarin
+        assertThat(from(response).get("rainfall.data[0].place"), not(isEmptyOrNullString()));
         assertThat(from(response).get("rainfall.data[0].max"), is(instanceOf(Integer.class)));
         if (!(from(response).get("rainfall.data[0].min") == null)) {
             assertThat(from(response).get("rainfall.data[0].min"), is(instanceOf(Integer.class)));
@@ -126,11 +129,11 @@ public class RestApiSteps {
         assertThat(from(response).get("warningMessage"), equalTo(""));
 
         if (!(from(response).get("rainstormReminder") == null)) {
-            assertThat(from(response).get("rainstormReminder"), equalTo(""));
+            assertThat(from(response).get("rainstormReminder"), not(isEmptyOrNullString()));
         } else { System.out.println("No Rainstorm Reminder data available"); }
 
         if (!(from(response).get("specialWxTips") == null)) {
-            assertThat(from(response).get("specialWxTips"), equalTo(""));
+            assertThat(from(response).get("specialWxTips"), not(isEmptyOrNullString()));
         } else { System.out.println("No Special Weather Tips Reminder data available"); }
 
         if (!(from(response).get("tcmessage") == null)) {
@@ -140,7 +143,7 @@ public class RestApiSteps {
         }
 
         if (!(from(response).get("mintempFrom00To09") == null)) {
-            assertThat(from(response).get("mintempFrom00To09"), equalTo(""));
+            assertThat(from(response).get("mintempFrom00To09"), not(isEmptyOrNullString()));
         } else {
             System.out.println("No Minimum temperature from midnight to 9 am data available");
         }
@@ -157,13 +160,13 @@ public class RestApiSteps {
             assertThat(from(response).get("rainfallJanuaryToLastMonth"), equalTo(""));
         } else { System.out.println("No Accumulated rainfall from January to last month data available"); }
 
-        assertThat(from(response).get("temperature.data[0].place"), not(isEmptyOrNullString())); //ada bahasa mandarin jg
+        assertThat(from(response).get("temperature.data[0].place"), not(isEmptyOrNullString()));
         assertThat(from(response).get("temperature.data[0].unit"), equalTo("C"));
         assertThat(from(response).get("temperature.recordTime"), containsString(getCurrentDate()));
 
         assertThat(from(response).get("humidity.data[0].value"), is(instanceOf(Integer.class)));
         assertThat(from(response).get("humidity.data[0].unit"),  not(isEmptyOrNullString()));
-        assertThat(from(response).get("humidity.data[0].place"), not(isEmptyOrNullString())); //ada bahasa mandarin jg
+        assertThat(from(response).get("humidity.data[0].place"), not(isEmptyOrNullString()));
         assertThat(from(response).get("humidity.recordTime"), containsString(getCurrentDate()));
 
 //         Or you can assert with Json Scheme instead

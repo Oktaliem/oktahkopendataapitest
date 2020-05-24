@@ -3,6 +3,9 @@ package com.oktaliem.hkopendata.utilities;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * @author Okta Liem
+ */
 public class DateTimeUtil {
     public static String getCurrentDate() {
         LocalDateTime myDateObj = LocalDateTime.now();

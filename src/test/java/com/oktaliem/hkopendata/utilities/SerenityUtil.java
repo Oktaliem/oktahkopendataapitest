@@ -3,6 +3,9 @@ package com.oktaliem.hkopendata.utilities;
 import net.thucydides.core.guice.ThucydidesModule;
 import net.thucydides.core.util.EnvironmentVariables;
 
+/**
+ * @author Okta Liem
+ */
 public class SerenityUtil {
     private static EnvironmentVariables evs;
 

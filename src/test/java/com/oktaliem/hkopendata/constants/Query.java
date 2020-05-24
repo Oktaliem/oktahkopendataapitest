@@ -1,5 +1,8 @@
 package com.oktaliem.hkopendata.constants;
 
+/**
+ * @author Okta Liem
+ */
 public interface Query {
 
     //Weather Information

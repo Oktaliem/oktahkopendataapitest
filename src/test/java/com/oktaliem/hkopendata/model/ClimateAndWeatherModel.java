@@ -1,5 +1,8 @@
 package com.oktaliem.hkopendata.model;
 
+/**
+ * @author Okta Liem
+ */
 public class ClimateAndWeatherModel {
     private String dataTpe ="";
     private String rformat ="";
