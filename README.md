@@ -3,7 +3,7 @@
 <br>
 
 # DEMO REST API TESTING
-REST API Testing with SerenityBDD + REST Assured example
+REST API Testing with SerenityBDD + REST Assured Framework
 
 ## Preparation
 To be able to run this REST API Automated Test, you should have these in your machine:
@@ -78,6 +78,8 @@ OS name: "linux", version: "5.4.0-29-generic", arch: "amd64", family: "unix"
 
 ## Run the Test Via Command Line
 ```
+This repository has been tested using Linux Environment.
+
 1. Go to path ~/hkopendata/
 2. Run this below command:
 $ mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuits.Exercise -Dskip-test=true
@@ -91,6 +93,10 @@ okta@okta:~/Desktop/hkopendata$ mvn clean verify -Dit.test=com.oktaliem.hkopenda
 Download this repository, go to this path below and click on index.html
 {path}/hkopendata/target/site/serenity/index.html
 ```
+
+## References
+- https://github.com/serenity-bdd/
+- https://github.com/rest-assured
 
 ## Testing Log Sample
 <details>
@@ -1197,3 +1203,6 @@ Get Weather Information for 'Current Weather Report' and 'Simplified Chinese' la
 [INFO] ------------------------------------------------------------------------
 
 ```
+
+
+
