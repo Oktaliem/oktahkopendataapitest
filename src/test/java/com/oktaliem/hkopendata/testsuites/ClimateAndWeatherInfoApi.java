@@ -1,4 +1,4 @@
-package com.oktaliem.hkopendata.testsuits;
+package com.oktaliem.hkopendata.testsuites;
 
 import com.oktaliem.hkopendata.model.ClimateAndWeatherModel;
 import com.oktaliem.hkopendata.steps.RestApiSteps;
@@ -19,7 +19,7 @@ import static com.oktaliem.hkopendata.constants.Query.JSON;
 
 /**
  * @Author : Okta Liem
- * mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuits.ClimateAndWeatherInfoApi -Dskip-test=true
+ * mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuites.ClimateAndWeatherInfoApi -Dskip-test=true
  */
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)

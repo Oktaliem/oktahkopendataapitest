@@ -68,7 +68,7 @@ OS name: "linux", version: "5.4.0-29-generic", arch: "amd64", family: "unix"
 
 ### Folder Structure
 ```
-1. Testsuits :Test suits & test cases.
+1. Testsuites :Test suites & test cases.
 2. Steps : API test steps and assertion.
 3. Model : Set up test data model (very useful if you have many parameters).
 4. Constants : Any constants that will be used in this repository.
@@ -82,10 +82,10 @@ This repository has been tested using Linux Environment.
 
 1. Go to path ~/hkopendata/
 2. Run this below command:
-$ mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuits.Exercise -Dskip-test=true
+$ mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuites.Exercise -Dskip-test=true
 
 i.e
-okta@okta:~/Desktop/hkopendata$ mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuits.Exercise -Dskip-test=true
+okta@okta:~/Desktop/hkopendata$ mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuites.Exercise -Dskip-test=true
 ```
 
 ## Test Report Sample
@@ -106,7 +106,7 @@ Log
 <p>
 
 ```maven
-okta@okta:~/Documents/GitHub/oktahkopendataapitest$ mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuits.Exercise -Dskip-test=true
+okta@okta:~/Documents/GitHub/oktahkopendataapitest$ mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuites.Exercise -Dskip-test=true
 WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by com.google.inject.internal.cglib.core.$ReflectUtils$1 (file:/usr/share/maven/lib/guice.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain)
 WARNING: Please consider reporting this to the maintainers of com.google.inject.internal.cglib.core.$ReflectUtils$1
@@ -157,7 +157,7 @@ WARNING: All illegal access operations will be denied in a future release
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
-[INFO] Running com.oktaliem.hkopendata.testsuits.Exercise
+[INFO] Running com.oktaliem.hkopendata.testsuites.Exercise
 [main] INFO  - 
 
 -------------------------------------------------------------------------------------
@@ -1166,7 +1166,7 @@ No Special Weather Tips Reminder data available
 
 Get Weather Information for 'Current Weather Report' and 'Simplified Chinese' language
 ----------------------------------------------------------------------------
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.546 s - in com.oktaliem.hkopendata.testsuits.Exercise
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.546 s - in com.oktaliem.hkopendata.testsuites.Exercise
 [INFO] 
 [INFO] Results:
 [INFO] 

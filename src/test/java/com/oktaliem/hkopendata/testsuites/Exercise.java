@@ -1,4 +1,4 @@
-package com.oktaliem.hkopendata.testsuits;
+package com.oktaliem.hkopendata.testsuites;
 
 import com.oktaliem.hkopendata.steps.RestApiSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;

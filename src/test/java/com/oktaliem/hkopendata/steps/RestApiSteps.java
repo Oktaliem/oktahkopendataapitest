@@ -2,7 +2,7 @@ package com.oktaliem.hkopendata.steps;
 
 import com.oktaliem.hkopendata.constants.Endpoints;
 import com.oktaliem.hkopendata.model.ClimateAndWeatherModel;
-import com.oktaliem.hkopendata.testsuits.WeatherInfoApi;
+import com.oktaliem.hkopendata.testsuites.WeatherInfoApi;
 import com.oktaliem.hkopendata.utilities.StepsUtil;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;

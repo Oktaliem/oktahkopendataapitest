@@ -1,4 +1,4 @@
-package com.oktaliem.hkopendata.testsuits;
+package com.oktaliem.hkopendata.testsuites;
 
 import com.oktaliem.hkopendata.steps.RestApiSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
@@ -14,7 +14,7 @@ import static com.oktaliem.hkopendata.constants.Query.*;
 /**
  * @Author : Okta Liem
  * How to run this Test suit
- * mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuits.WeatherInfoApi -Dskip-test=true
+ * mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuites.WeatherInfoApi -Dskip-test=true
  */
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
