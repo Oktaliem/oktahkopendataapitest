@@ -89,7 +89,6 @@ okta@okta:~/Desktop/oktahkopendataapitest$ mvn clean verify -Dit.test=com.oktali
 
 ## Test Report Sample
 ```
-Download this repository, go to this path below and click on index.html
 {path}/hkopendata/target/site/serenity/index.html
 ```
 
