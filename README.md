@@ -2,7 +2,7 @@
 <h4 align="center">SOFTWARE TESTING ENTHUSIAST</h4>
 <br>
 
-# DEMO REST API TESTING
+# REST API Testing with Java
 REST API Testing with SerenityBDD + REST Assured Framework
 
 ## Preparation
