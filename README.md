@@ -9,7 +9,6 @@ REST API Testing with SerenityBDD + REST Assured Framework
 To be able to run this REST API Automated Test, you should have these in your machine:
 - Maven (mandatory)
 - Java 11 recommended (mandatory)
-- Any Java IDE,  i.e. IntelliJ/Eclipse (Optional)
 
 ### Java Installation
 Please browsing how to install JAVA in your PC or you can use this references:
@@ -80,12 +79,12 @@ OS name: "linux", version: "5.4.0-29-generic", arch: "amd64", family: "unix"
 ```
 This repository has been tested using Linux Environment.
 
-1. Go to path ~/hkopendata/
+1. Go to path ~/oktahkopendataapitest/
 2. Run this below command:
 $ mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuites.Exercise -Dskip-test=true
 
 i.e
-okta@okta:~/Desktop/hkopendata$ mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuites.Exercise -Dskip-test=true
+okta@okta:~/Desktop/oktahkopendataapitest$ mvn clean verify -Dit.test=com.oktaliem.hkopendata.testsuites.Exercise -Dskip-test=true
 ```
 
 ## Test Report Sample
