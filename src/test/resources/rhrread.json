@@ -248,7 +248,7 @@
               "value": {
                 "$id": "#root/uvindex/data/items/value",
                 "title": "Value",
-                "type": "integer",
+                "type": "number",
                 "examples": [
                   3
                 ],

@@ -105,7 +105,7 @@ public class RestApiSteps {
         assertThat(from(response).get("rainfall.data[0].place"), not(isEmptyOrNullString()));
         assertThat(from(response).get("rainfall.data[0].max"), is(instanceOf(Integer.class)));
         if (!(from(response).get("rainfall.data[0].min") == null)) {
-            assertThat(from(response).get("rainfall.data[0].min"), is(instanceOf(Integer.class)));
+            assertThat(from(response).get("rainfall.data[0].min"), is(instanceOf(Float.class)));
         } else { System.out.println("No Minimum rainfall record data available"); }
 
         assertThat(from(response).get("rainfall.data[0].main"), equalTo("FALSE"));
@@ -117,7 +117,7 @@ public class RestApiSteps {
 
         if (getCurrentHours() >= 6 && getCurrentHours() <= 18) {
         assertThat(from(response).get("uvindex.data[0].place"), not(isEmptyOrNullString()));
-        assertThat(from(response).get("uvindex.data[0].value"), is(instanceOf(Integer.class)));
+        assertThat(from(response).get("uvindex.data[0].value"), is(instanceOf(Float.class)));
         assertThat(from(response).get("uvindex.data[0].desc"), not(isEmptyOrNullString()));
         if (!(from(response).get("uvindex.data[0].message") == null)) {
             assertThat(from(response).get("uvindex.data[0].message"), not(isEmptyOrNullString()));
@@ -143,7 +143,6 @@ public class RestApiSteps {
         }
 
         if (!(from(response).get("mintempFrom00To09") == null)) {
-            assertThat(from(response).get("mintempFrom00To09"), not(isEmptyOrNullString()));
         } else {
             System.out.println("No Minimum temperature from midnight to 9 am data available");
         }
