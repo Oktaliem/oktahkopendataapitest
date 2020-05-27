@@ -98,7 +98,7 @@ public class RestApiSteps {
             assertThat(from(response).get("lightning.data[0].place"), not(isEmptyOrNullString()));
             assertThat(from(response).get("lightning.data[0].occur"), equalTo(TRUE));
             assertThat(from(response).get("lightning.startTime"), not(isEmptyOrNullString()));
-            assertThat(from(response).get("lightning.startTime"), not(isEmptyOrNullString()));
+            assertThat(from(response).get("lightning.endTime"), not(isEmptyOrNullString()));
         } else { System.out.println("No Lightning data available"); }
 
         assertThat(from(response).get("rainfall.data[0].unit"), equalTo("mm"));
@@ -110,7 +110,7 @@ public class RestApiSteps {
 
         assertThat(from(response).get("rainfall.data[0].main"), equalTo("FALSE"));
         assertThat(from(response).get("rainfall.startTime"), not(isEmptyOrNullString()));
-        assertThat(from(response).get("rainfall.startTime"), not(isEmptyOrNullString()));
+        assertThat(from(response).get("rainfall.endTime"), not(isEmptyOrNullString()));
 
         assertThat(from(response).get("icon[0]"), is(instanceOf(Integer.class)));
         assertThat(from(response).get("iconUpdateTime"), containsString(getCurrentDate()));
